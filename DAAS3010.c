@@ -56,6 +56,7 @@ main (void)
     source_Init();
 	
 /*Don't change the order of these because the load function will not work properly*/
+
     k2400_Init();
     k2000_Init();
     k213_Init();
@@ -65,18 +66,22 @@ main (void)
 	LS335_Init();
 	LS340_Init();
 	hp4156_Init();
-/*rs232 instruments init*/
+	
+/* rs232 instruments init. TODO: do we need this anymore? */
 
 	itc4_Init();
 
-/*PCI slot and USB Instacal compatible devices*/
+/* PCI slot and USB Instacal compatible devices */
+
 	das6036_Init();
 	das1602_Init();
 	dda08_Init();
 	usb1208ls_Init();
 	init_MCCdevices();
+
 /***********************************************************************************/    
-    SetIdleEventRate (0);
+    
+	SetIdleEventRate (0);
     InstallMainCallback (AcquireData, 0, 1);
 	
 	utilG.err = 0;
