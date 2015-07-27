@@ -1448,14 +1448,14 @@ void curve_Plot (int panel, int control, curvePtr c, void *graphP)
         else style = c->attr.style.plot;
 		if(graph)
 		{
-			double **xArr = acqchan_MeasurementArray (c->x->readings, graph->acqcurve.x->coeff, graph->x.conversion.val, c->pts) + c->offset;
-			double **yArr = acqchan_MeasurementArray (c->y->readings, graph->acqcurve.y->coeff, graph->y.conversion.val, c->pts) + c->offset;
-			c->plothandle = PlotXY (panel, control, *xArr, *yArr,
+			double **xArr = acqchan_MeasurementArray (c->x->readings, graph->acqcurve.x->coeff, graph->x.conversion.val, c->pts);
+			double **yArr = acqchan_MeasurementArray (c->y->readings, graph->acqcurve.y->coeff, graph->y.conversion.val, c->pts);
+			c->plothandle = PlotXY (panel, control, *xArr + c->offset, *yArr + c->offset,
 								c->pts, VAL_DOUBLE, VAL_DOUBLE, style,
                                 c->attr.style.point, c->attr.style.line,
                                 c->attr.ptfreq, c->attr.color);
-			free(xArr);
-			free(yArr);
+			acqchan_MeasurementArrayFree(xArr);//  free(xArr);
+			acqchan_MeasurementArrayFree(yArr);//  free(yArr);
 		}
 		else
 			c->plothandle = PlotXY (panel, control, 

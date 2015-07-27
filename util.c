@@ -360,7 +360,7 @@ void *util_formatParse(char *format, va_list *list, char *msg, int index)
 		index++;
 		util_formatParse(format, list, msg, index);
 	}	
-	va_end(list);
+	va_end(*list);
 	free(temp);
 	return msg;
 }
@@ -393,7 +393,7 @@ void util_formatParseRead(char *format, va_list *list, char *msg, int index)
 		Fmt(msg, "%s;", msg);
 		index++;
 	}	
-	va_end(list);
+	va_end(*list);
 }
 
 void util_MessagePopup(char* Title, char* Message, ...)

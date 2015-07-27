@@ -183,8 +183,8 @@ void acqcurve_Plot (void *graphP, int panel, int control, acqcurvePtr acqcurve)
                                               VAL_THIN_LINE, VAL_NO_POINT, VAL_SOLID,
                                               acqcurve->ptfreq, acqcurve->color);
                 acqcurve->bufferpts++;
-				free(xArr);
-				free(yArr);
+				acqchan_MeasurementArrayFree(xArr);//  free(xArr);
+				acqchan_MeasurementArrayFree(yArr);//  free(yArr);
             }
         }
     }

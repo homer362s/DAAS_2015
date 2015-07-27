@@ -681,6 +681,13 @@ double **acqchan_MeasurementArray (double *readings, double coeff, int conversio
     return measurement;
 }
 
+void acqchan_MeasurementArrayFree( double ** measurement){
+	
+	free(measurement[0]);
+	free(measurement);
+	
+}
+
 acqchanPtr acqchan_Create (char *label, void *dev, GetReadingPtr GetReading)
 {
     acqchanPtr c;

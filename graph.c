@@ -395,8 +395,8 @@ void graph_ReplotCurvesWithConv(graphPtr graph)
 			PlotXY (graph->p, GRAPH_GRAPH, *xArr, *yArr,
 			curve->pts, VAL_DOUBLE, VAL_DOUBLE, VAL_THIN_LINE, VAL_NO_POINT, VAL_SOLID,
 			graph->acqcurve.ptfreq, graph->acqcurve.color);
-		free(xArr);
-		free(yArr);
+		acqchan_MeasurementArrayFree(xArr);//  free(xArr);
+		acqchan_MeasurementArrayFree(yArr);//  free(yArr);
 	}
 }
 

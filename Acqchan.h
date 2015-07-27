@@ -39,6 +39,7 @@ extern void acqchan_Load (void *dev, acqchanPtr acqchan);
 extern acqchanPtr acqchan_Create (char *label, void *dev, GetReadingPtr GetReading);
 extern double acqchan_Measurement (double reading, double coeff, int conversion);
 extern double **acqchan_MeasurementArray (double *readings, double coeff, int conversion, int pts);
+extern void acqchan_MeasurementArrayFree( double ** measurement);
 extern void acqchanlist_Dimmed (int dimmed);
 extern int  acqchanlist_FindItem (acqchanPtr chan);
 extern void acqchanlist_Display(void);
